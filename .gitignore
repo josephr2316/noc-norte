@@ -1,0 +1,18 @@
+# Archivos de configuración de contenedores
+*.log
+*.pid
+
+# Carpetas de datos de contenedores (volúmenes)
+librenms/
+grafana/
+influxdb/
+loki/
+prometheus/
+promtail/
+syslog-ng/
+
+# Archivos temporales del sistema
+*.bak
+*.swp
+*.tmp
+.env
