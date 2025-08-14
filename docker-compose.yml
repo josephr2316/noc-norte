@@ -24,6 +24,7 @@ services:
       - "${LIBRENMS_PORT:-8000}:8000"
     volumes:
       - ./librenms:/data
+      - ./librenms/syslog:/data/syslog
     depends_on:
       - mariadb
       - memcached
@@ -58,8 +59,10 @@ services:
     container_name: librenms-syslog-ng
     ports:
       - "514:514/udp"
+      - "514:514/tcp"
     volumes:
-      - ./syslog-ng:/etc/syslog-ng
+      - ./syslog-ng/syslog-ng.conf:/etc/syslog-ng/syslog-ng.conf:ro
+      - ./librenms/syslog:/data/syslog
     networks:
       - monitor-net
     restart: unless-stopped
